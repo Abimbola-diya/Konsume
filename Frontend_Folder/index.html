@@ -482,7 +482,16 @@
       </svg>
     </h2>
 
-    <div class="hiw__carousel" id="hiw-carousel">
+    <!-- Top overlap edge — cream above, black below -->
+    <div class="torn-edge torn-edge--top" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,90 L1440,90 L1440,75 L1432,68 L1425,78 L1412,72 L1405,82 L1388,58 L1372,65 L1365,80 L1352,48 L1340,60 L1322,52 L1310,78 L1285,45 L1272,55 L1258,50 L1242,75 L1225,42 L1212,52 L1198,48 L1185,72 L1162,38 L1145,50 L1132,45 L1118,68 L1092,35 L1078,48 L1068,42 L1050,75 L1025,38 L1010,50 L992,45 L978,78 L955,42 L942,52 L928,48 L912,72 L885,38 L872,50 L860,45 L845,68 L815,35 L802,48 L790,42 L778,75 L752,38 L738,50 L720,45 L708,78 L680,42 L665,52 L655,48 L638,72 L612,38 L598,50 L582,45 L565,68 L538,35 L525,48 L512,42 L498,75 L472,38 L460,50 L448,45 L432,78 L408,42 L395,52 L382,48 L368,72 L342,38 L328,50 L312,45 L295,68 L268,35 L255,48 L242,42 L228,75 L202,38 L188,50 L172,45 L155,78 L128,42 L115,52 L102,48 L88,72 L62,38 L48,50 L35,45 L22,68 L0,55 Z" fill="#000000"/>
+      </svg>
+    </div>
+
+    <!-- Black section body -->
+    <div class="hiw__dark-body">
+      <div class="hiw__carousel" id="hiw-carousel">
       <div class="hiw__track" id="hiw-track">
 
         <!-- SLIDE 0 — How Konsume Works Overview (Green Overview Card) -->
@@ -611,6 +620,98 @@
       </div>
 
     </div><!-- /carousel -->
+    </div><!-- /dark-body -->
+
+    <!-- Bottom torn edge — black above, cream below -->
+    <div class="torn-edge torn-edge--bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L1440,0 L1440,15 L1432,22 L1425,12 L1412,18 L1405,8 L1388,32 L1372,25 L1365,10 L1352,42 L1340,30 L1322,38 L1310,12 L1285,45 L1272,35 L1258,40 L1242,15 L1225,48 L1212,38 L1198,42 L1185,18 L1162,52 L1145,40 L1132,45 L1118,22 L1092,55 L1078,42 L1068,48 L1050,15 L1025,52 L1010,40 L992,45 L978,12 L955,48 L942,38 L928,42 L912,18 L885,52 L872,40 L860,45 L845,22 L815,55 L802,42 L790,48 L778,15 L752,52 L738,40 L720,45 L708,12 L680,48 L665,38 L655,42 L638,18 L612,52 L598,40 L582,45 L565,22 L538,55 L525,42 L512,48 L498,15 L472,52 L460,40 L448,45 L432,12 L408,48 L395,38 L382,42 L368,18 L342,52 L328,40 L312,45 L295,22 L268,55 L255,42 L242,48 L228,15 L202,52 L188,40 L172,45 L155,12 L128,48 L115,38 L102,42 L88,18 L62,52 L48,40 L35,45 L22,22 L0,35 Z" fill="#000000"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Spacer between HIW and FAQ (Cream Background) -->
+  <div class="faq-spacer" aria-hidden="true"></div>
+
+  <!-- FAQ SECTION (NO bottom torn edge) -->
+  <section class="faq" id="faq-section">
+    <div class="faq__dark-body">
+      <div class="faq__container">
+        
+        <!-- Left Column: FAQs List -->
+        <div class="faq__col faq__col--left">
+          <h2 class="faq__heading">FAQs.</h2>
+          <div class="faq__list-wrapper">
+            <div class="faq__questions-list">
+              <button class="faq__question-btn faq__question-btn--active" data-faq="0">
+                <span>What is Konsume?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="1">
+                <span>Does Konsume deliver groceries?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="2">
+                <span>Will my groceries be fresh if I order on Konsume?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="3">
+                <span>How do I sign up as a vendor on Konsume?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="4">
+                <span>How do I create an account on Konsume?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="5">
+                <span>Does Konsume deliver only food?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+              
+              <button class="faq__question-btn" data-faq="6">
+                <span>What is Konsume wallet?</span>
+                <svg class="faq__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column: Answer Display -->
+        <div class="faq__col faq__col--right">
+          <h2 class="faq__heading">Ans.</h2>
+          <div class="faq__answer-card">
+            <div class="faq__answer-star-wrapper">
+              <svg class="faq__answer-star" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3l1.9 2.5 3.1-.7.4 3.1 2.8 1.4-1.4 2.8 2 2.5-2.5 2-1.4 2.8-3 .4-.7 3.1-2.5-1.9-2.5 1.9-.7-3.1-3-.4-1.4-2.8-2.5-2 2-2.5-1.4-2.8 2.8-1.4.4-3.1 3.1.7L12 3z"/>
+              </svg>
+            </div>
+            <p class="faq__answer-text" id="faq-answer-text">
+              Konsume is a platform designed to bring the local food market directly to your phone. We allow multiple vendors to compete for your orders, giving you access to real market prices without having to leave your home, while offering bulk-buying and group pools to save you even more.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════

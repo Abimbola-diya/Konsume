@@ -25,8 +25,8 @@ html {
 
 body {
   font-family: 'Outfit', sans-serif;
-  /* Warm amber that echoes the market image so below-hero feels continuous */
-  background: #000000;
+  /* Cream page background — shows through torn paper edges */
+  background: #FFF8F0;
   color: #3D2C1E;
   overflow-x: visible;
   -webkit-font-smoothing: antialiased;
@@ -1331,10 +1331,10 @@ body.menu-open .mobile-menu__panel {
 .hiw {
   position: relative;
   width: 100%;
-  background: linear-gradient(to bottom, #FFF8F0 0%, #FFF8F0 330px, transparent 330px);
+  background: #FFF8F0;
   z-index: 4;
   padding: 60px 0 0;
-  margin-bottom: -320px;
+  margin-bottom: 0;
   overflow: visible;
 }
 
@@ -1345,7 +1345,7 @@ body.menu-open .mobile-menu__panel {
   color: #000000;
   text-align: center;
   letter-spacing: -0.03em;
-  margin-bottom: 80px;
+  margin-bottom: 220px;
 }
 
 .hiw__heading-arrow {
@@ -1358,18 +1358,45 @@ body.menu-open .mobile-menu__panel {
   vertical-align: -6px;
 }
 
-/* ── Carousel container — rounded card, bleeds out ── */
+/* ── Black paper body ── */
+.hiw__dark-body {
+  background: #000000;
+  padding: 40px 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Bottom torn paper edge ── */
+.torn-edge {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.torn-edge svg {
+  display: block;
+  width: 100%;
+}
+
+.torn-edge--bottom svg {
+  height: 80px;
+}
+
+/* ── Carousel container — rounded card overlaying straight line ── */
 .hiw__carousel {
   position: relative;
   max-width: 1200px;
   width: calc(100% - 80px);
-  margin: 0 auto;
+  margin: -160px auto 0;
   border-radius: 20px;
   overflow: hidden;
   border: none;
   box-shadow:
-    0 24px 80px rgba(26, 16, 8, 0.22),
-    0 6px 20px rgba(26, 16, 8, 0.10);
+    0 24px 80px rgba(0, 0, 0, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 5;
 }
 
 /* ── Slide track ── */
@@ -2052,6 +2079,186 @@ body.menu-open .mobile-menu__panel {
 }
 
 /* ═══════════════════════════════════════════════════════
+   FAQ SECTION — Overflowing rounded card
+   ═══════════════════════════════════════════════════════ */
+
+.faq-spacer {
+  height: 120px;
+  background: #FFF8F0;
+  width: 100%;
+}
+
+.faq {
+  position: relative;
+  width: 100%;
+  background: #FFF8F0;
+  z-index: 4;
+  padding: 0;
+  margin-bottom: 0;
+  overflow: visible;
+}
+
+.faq__dark-body {
+  background: #000000;
+  padding: 80px 0 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.faq__container {
+  position: relative;
+  max-width: 1200px;
+  width: calc(100% - 80px);
+  margin: -180px auto 0; /* Overlap cream boundary */
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 3.5px solid #000000;
+  box-shadow: 
+    0 24px 80px rgba(0, 0, 0, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  display: flex;
+  padding: 50px;
+  gap: 50px;
+  overflow: visible;
+}
+
+.faq__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq__col--left {
+  flex: 1;
+  min-width: 0;
+}
+
+.faq__col--right {
+  flex: 1.1;
+  min-width: 0;
+}
+
+.faq__heading {
+  font-family: 'Quicksand', 'Outfit', sans-serif !important;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #0E4A35;
+  margin-bottom: 30px;
+  letter-spacing: -0.03em;
+}
+
+.faq__list-wrapper {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+/* Custom Scrollbar for FAQ list */
+.faq__list-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.faq__list-wrapper::-webkit-scrollbar-track {
+  background: #FFF8F0;
+  border-radius: 99px;
+}
+.faq__list-wrapper::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 99px;
+}
+.faq__list-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #A08878;
+}
+
+.faq__questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq__question-btn {
+  background: #FFFFFF;
+  color: #0E4A35;
+  border: 1px solid #EAEAEA;
+  border-radius: 12px;
+  padding: 18px 24px;
+  text-align: left;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.faq__question-btn:hover {
+  border-color: #0E4A35;
+  background: #FFF8F0;
+}
+
+.faq__question-btn--active {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #000000 !important;
+}
+
+.faq__star-icon {
+  width: 20px;
+  height: 20px;
+  color: #FFB800; /* vibrant yellow */
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+.faq__question-btn--active .faq__star-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.faq__answer-card {
+  background: #FFB800; /* chowdeck/konsume-style bold yellow/orange */
+  border: 3.5px solid #000000;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  min-height: 380px;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1); /* premium blocky style */
+  position: relative;
+}
+
+.faq__answer-star-wrapper {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.faq__answer-star {
+  width: 32px;
+  height: 32px;
+  color: #000000;
+}
+
+.faq__answer-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════ */
 
@@ -2314,12 +2521,12 @@ body.menu-open .mobile-menu__panel {
 
   .hiw {
     padding: 50px 0 0;
-    margin-bottom: -120px;
+    margin-bottom: 0;
   }
 
   .hiw__heading {
     font-size: 2.8rem;
-    margin-bottom: 50px;
+    margin-bottom: 140px;
   }
 
   .hiw__heading-arrow {
@@ -2332,8 +2539,9 @@ body.menu-open .mobile-menu__panel {
 
   .hiw__carousel {
     border-radius: 20px;
-    margin: 0 16px;
+    margin: -100px 16px 0;
     width: auto;
+    z-index: 5;
   }
 
   .hiw__slide {
@@ -2416,22 +2624,45 @@ body.menu-open .mobile-menu__panel {
     padding: 16px 24px 22px;
   }
 
-  .hiw {
-    margin-bottom: -180px;
+  /* Tablet FAQ Overrides */
+  .faq-spacer {
+    height: 80px;
+  }
+
+  .faq__container {
+    flex-direction: column;
+    margin: -140px 16px 0;
+    width: auto;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .faq__heading {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .faq__list-wrapper {
+    max-height: 320px;
+    padding-right: 8px;
+  }
+
+  .faq__question-btn {
+    padding: 14px 18px;
+    font-size: 1rem;
+  }
+
+  .faq__answer-card {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+
+  .faq__answer-text {
+    font-size: 1.1rem;
   }
 
   .footer {
-    padding-top: 200px;
-  }
-
-  .footer__top {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .footer__nav {
-    flex-direction: column;
-    gap: 40px;
+    display: none;
   }
 }
 
@@ -2559,12 +2790,12 @@ body.menu-open .mobile-menu__panel {
 
   .hiw {
     padding: 40px 0 0;
-    margin-bottom: -80px;
+    margin-bottom: 0;
   }
 
   .hiw__heading {
     font-size: 2.2rem;
-    margin-bottom: 38px;
+    margin-bottom: 110px;
   }
 
   .hiw__heading-arrow {
@@ -2577,8 +2808,9 @@ body.menu-open .mobile-menu__panel {
 
   .hiw__carousel {
     border-radius: 16px;
-    margin: 0 12px;
+    margin: -80px 12px 0;
     width: auto;
+    z-index: 5;
   }
 
   .hiw__slide {
@@ -2673,21 +2905,45 @@ body.menu-open .mobile-menu__panel {
     height: 40px;
   }
 
-  .hiw {
-    margin-bottom: -120px;
+  /* Mobile FAQ Overrides */
+  .faq-spacer {
+    height: 60px;
+  }
+
+  .faq__container {
+    margin: -110px 12px 0;
+    padding: 24px 16px;
+    gap: 24px;
+    border-width: 2.5px;
+  }
+
+  .faq__heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .faq__list-wrapper {
+    max-height: 280px;
+  }
+
+  .faq__question-btn {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+    border-radius: 8px;
+  }
+
+  .faq__answer-card {
+    padding: 24px 16px;
+    border-width: 2.5px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  }
+
+  .faq__answer-text {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .footer {
-    padding-top: 140px;
-  }
-
-  .footer__nav {
-    gap: 30px;
-  }
-
-  .footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    display: none;
   }
 }

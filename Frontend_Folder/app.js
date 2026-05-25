@@ -238,11 +238,42 @@
     startAuto();
   }
 
-  // Start both once DOM is ready
+  function setupFAQ() {
+    var questions = document.querySelectorAll('.faq__question-btn');
+    var answerText = document.getElementById('faq-answer-text');
+    if (!questions.length || !answerText) return;
+
+    var answers = {
+      0: "Konsume is a platform designed to bring the local food market directly to your phone. We allow multiple vendors to compete for your orders, giving you access to real market prices without having to leave your home, while offering bulk-buying and group pools to save you even more.",
+      1: "Yes, Konsume specializes in fresh groceries, raw foods, and market ingredients directly sourced from local markets and delivered straight to your doorstep.",
+      2: "Freshness is one of the most important parts of grocery delivery at Konsume. We make sure you don't lose out on quality. We work with trusted vendors and well-known local markets so your fruits, vegetables, meat, and fish arrive crisp, clean, and ready to use.",
+      3: "You can sign up as a vendor on Konsume by downloading the Konsume Vendor app or completing the vendor registration on our website. You can set up your store, add your product list, and start receiving orders from local buyers in minutes.",
+      4: "Creating an account is simple. Just download the Konsume customer app or click sign-up on our landing page, enter your phone number, email, and password, and verify your location to start browsing your local markets.",
+      5: "Currently, Konsume focuses primarily on local market foods, ingredients, fresh groceries, pantry staples, and bulk household procurement to optimize your eating and cooking budget.",
+      6: "Konsume Wallet is a digital account on the platform that lets you fund your purchases, receive refunds instantly, manage your bulk pool contributions, and enjoy seamless, one-click checkouts."
+    };
+
+    questions.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        questions.forEach(function (q) {
+          q.classList.remove('faq__question-btn--active');
+        });
+        btn.classList.add('faq__question-btn--active');
+
+        var id = btn.getAttribute('data-faq');
+        if (answers[id] !== undefined) {
+          answerText.textContent = answers[id];
+        }
+      });
+    });
+  }
+
+  // Start all once DOM is ready
   function init() {
     createTypewriter(heroEl, heroPhrases);
     setupMobileMenu();
     setupHIWCarousel();
+    setupFAQ();
     // Slight delay so the two typewriters don't perfectly sync
     setTimeout(function () {
       createTypewriter(marketEl, marketPhrases, {
