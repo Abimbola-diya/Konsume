@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konsume — The Digital Local Market</title>
+  <meta name="description"
+    content="Konsume is Nigeria's digital raw-food marketplace. Buy together, save more. Bulk buying made simple." />
+
+  <!-- Google Fonts — Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Gochi+Hand&family=Caveat+Brush&family=Quicksand:wght@500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       NAVBAR — Floating, rounded, Chowdeck-inspired
+       Brand pill (left) · Nav links (center) · Cart (right)
+  ═══════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+
+    <!-- Left: Brand + Location -->
+    <div class="navbar__left">
+      <a href="/" class="navbar__brand" id="brand-link">
+        <span class="navbar__brand-pill">
+          <span class="navbar__brand-text">Konsume</span>
+          <span class="navbar__brand-icon" style="display:none;">K</span>
+        </span>
+      </a>
+      <button class="navbar__location-pill" id="location-btn">
+        <span class="navbar__flag">🇳🇬</span>
+        <span class="navbar__loc-text">NG</span>
+        <!-- Lucide: chevron-down -->
+        <svg class="navbar__loc-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Center: Nav links in a pill container -->
+    <div class="navbar__center">
+      <a href="#" class="navbar__link" id="nav-market">Market</a>
+      <a href="#" class="navbar__link" id="nav-vendors">Vendors</a>
+      <a href="#" class="navbar__link" id="nav-pool">Pool Buying</a>
+      <a href="#" class="navbar__link navbar__link--has-icon" id="nav-products">
+        Products
+        <!-- Lucide: chevron-down -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Right: More + Cart -->
+    <div class="navbar__right">
+      <button class="navbar__cart-btn" id="cart-btn" aria-label="Shopping cart">
+        <!-- Lucide: shopping-cart -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+        </svg>
+      </button>
+      <button class="navbar__more-btn" id="more-btn" aria-controls="mobile-menu" aria-expanded="false"
+        aria-label="Open menu">
+        <span class="navbar__more-text">More</span>
+        <!-- Lucide: chevron-down -->
+        <svg class="navbar__more-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+        <!-- Lucide: menu (hamburger for mobile) -->
+        <svg class="navbar__more-hamburger" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="20"
+          height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       MOBILE MENU (OFF-CANVAS)
+       Slides in on small screens when the hamburger is tapped
+  ═══════════════════════════════════════════════════ -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__overlay" data-menu-close></div>
+    <aside class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+      <div class="mobile-menu__header">
+        <div class="mobile-menu__cart" aria-hidden="true">
+          <!-- Lucide: shopping-cart -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+        </div>
+        <button class="mobile-menu__close" type="button" data-menu-close aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" x2="6" y1="6" y2="18" />
+            <line x1="6" x2="18" y1="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Mobile">
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Customers.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Customers</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Vendors.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Vendors</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Markets.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Marketplace</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Pool_buying.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Pool Buying</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Contact.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Contacts</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/Company.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Company</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/blog.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Blog</span>
+        </a>
+        <a class="mobile-menu__link" href="#">
+          <span class="mobile-menu__icon-wrap">
+            <img src="icon_pics/X.png" alt="" class="mobile-menu__icon" />
+          </span>
+          <span class="mobile-menu__text">Twitter</span>
+        </a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO SECTION
+       Cream background · Typed headline · Address bar
+       Market scene (balanced.png) at the bottom
+  ═══════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <div class="hero__content">
+      <h1 class="hero__tagline">
+        <span id="typed-text"></span><span class="hero__cursor">|</span>
+      </h1>
+
+      <!-- Search / Address Row -->
+      <div class="hero__search-row" id="search-row">
+        <div class="hero__address-field">
+          <!-- Lucide: map-pin -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <input type="text" placeholder="Enter a delivery address" id="address-input" />
+        </div>
+        <button class="hero__order-btn" id="order-btn">Order now</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CANOPY WAVE TRANSITION
+       Three layered scalloped waves that echo the round
+       umbrella canopy shapes from the market. Warm tones
+       pull from the market palette — not sterile white clouds.
+  ═══════════════════════════════════════════════════ -->
+  <div class="canopy-wave" aria-hidden="true">
+
+    <!-- Layer 1 (back): golden ochre — deepest, widest bumps -->
+    <svg class="canopy-wave__layer canopy-wave__layer--back" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path
+        d="M0,120 C0,120 0,80 60,80 C120,80 120,40 180,40 C240,40 240,70 300,70 C360,70 360,30 420,30 C480,30 480,65 540,65 C600,65 600,25 660,25 C720,25 720,60 780,60 C840,60 840,20 900,20 C960,20 960,55 1020,55 C1080,55 1080,35 1140,35 C1200,35 1200,70 1260,70 C1320,70 1320,45 1380,45 C1410,45 1440,80 1440,80 L1440,120 Z"
+        fill="#D4A030" fill-opacity="0.25" />
+    </svg>
+
+    <!-- Layer 2 (mid): terracotta dust — offset rhythm -->
+    <svg class="canopy-wave__layer canopy-wave__layer--mid" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path
+        d="M0,120 C0,120 0,70 80,70 C160,70 160,35 240,35 C320,35 320,60 400,60 C480,60 480,25 560,25 C640,25 640,55 720,55 C800,55 800,20 880,20 C960,20 960,50 1040,50 C1120,50 1120,30 1200,30 C1280,30 1280,65 1360,65 C1400,65 1440,50 1440,50 L1440,120 Z"
+        fill="#C2410C" fill-opacity="0.12" />
+    </svg>
+
+    <!-- Layer 3 (front): warm cream — becomes the next section -->
+    <svg class="canopy-wave__layer canopy-wave__layer--front" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path
+        d="M0,120 C0,120 0,65 90,65 C180,65 180,30 270,30 C360,30 360,55 450,55 C540,55 540,15 630,15 C720,15 720,50 810,50 C900,50 900,25 990,25 C1080,25 1080,60 1170,60 C1260,60 1260,35 1350,35 C1395,35 1440,60 1440,60 L1440,120 Z"
+        fill="#FFF8F0" />
+    </svg>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       MARKET-READY SECTION
+       "Ready for the market?" with typewriter animation
+  ═══════════════════════════════════════════════════ -->
+  <section class="market-ready" id="market-ready">
+    <div class="market-ready__inner">
+
+      <h2 class="market-ready__heading">
+        <span id="market-typed-text"></span><span class="market-ready__cursor">|</span>
+      </h2>
+
+      <p class="market-ready__subtitle">
+        Konsume — Market prices, without the market stress. Buy together, eat more, spend less!
+      </p>
+
+    </div>
+  </section>
+
+  <div class="why-konsume-divider">
+    <img src="pictures/Why_Konsume.png" alt="Why Konsume" class="why-konsume-shake" />
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       MARKET PRICE SECTION
+       Two-column: Text left · Image right
+       "Konsume brings you the market."
+  ═══════════════════════════════════════════════════ -->
+  <section class="market-price" id="market-price">
+    <div class="market-price__inner">
+
+      <picture class="feature-number-badge-picture">
+        <source media="(max-width: 900px)" srcset="Mobile_view_pics/Number_1.png" />
+        <img src="pictures/Number_1.png" alt="Step 1" class="feature-number-badge" />
+      </picture>
+
+      <!-- Left: Copy -->
+      <div class="market-price__text">
+        <h2 class="market-price__heading">
+          Konsume brings you the market.<br>
+          And by market, we mean <em>market price.</em>
+        </h2>
+
+        <p class="market-price__body">
+          With Konsume, you pay exactly what you'd pay in the market. Not a naira more.
+        </p>
+
+        <p class="market-price__body">
+          The price is the point.<br>
+          We kept it.
+        </p>
+
+
+        <p class="market-price__body market-price__body--closer">
+          <strong>We are the market. We just removed the journey.</strong>
+        </p>
+
+        <a href="#" class="market-price__cta" id="cta-go-to-market">
+          <!-- Lucide: shopping-basket -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 11 4-7" />
+            <path d="m19 11-4-7" />
+            <path d="M2 11h20v2a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-2Z" />
+            <path d="m3.5 15.5 1.5 5h14l1.5-5" />
+            <path d="M12 11v4" />
+          </svg>
+          Go to market
+        </a>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="market-price__image-wrap">
+        <img src="pictures/Owó kékèré, oúnjẹ púpọ̀ (1).png"
+          alt="Nigerian market woman selling fresh peppers — Owó kékèré, oúnjẹ púpọ̀" loading="lazy"
+          class="market-price__img" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       POOL BUYING SECTION
+       Image left · Text right · Amber accent
+       "You don't need big money to buy big."
+  ═══════════════════════════════════════════════════ -->
+  <section class="pool-buying" id="pool-buying">
+    <div class="pool-buying__inner">
+
+      <picture class="feature-number-badge-picture">
+        <source media="(max-width: 900px)" srcset="Mobile_view_pics/Number_2.png" />
+        <img src="pictures/Number_2.png" alt="Step 2" class="feature-number-badge feature-number-badge--2" />
+      </picture>
+
+      <!-- Left: Image -->
+      <div class="pool-buying__image-wrap">
+        <img src="pictures/bulk_buying.png"
+          alt="Groups of people buying together at the market — Pool Buying with Konsume" loading="lazy"
+          class="pool-buying__img" />
+      </div>
+
+      <!-- Right: Copy -->
+      <div class="pool-buying__text">
+
+
+        <h2 class="pool-buying__heading">
+          You don't need <em>big money</em><br>to <em>buy big.</em>
+        </h2>
+
+        <p class="pool-buying__body">
+          With Konsume, you, your neighbours, friends, or even strangers
+          can <strong>pool money together online</strong> — and we buy in bulk
+          from the market at the <strong>real market price.</strong>
+        </p>
+
+        <p class="pool-buying__body">
+          <em>The bigger the pool, the better the deal.</em> Everyone gets
+          their fair share based on what they contributed,
+          <strong>delivered straight to their door.</strong>
+        </p>
+
+        <p class="pool-buying__body pool-buying__body--closer">
+          <strong>No market stress. More food, less money.</strong>
+        </p>
+
+        <a href="#" class="pool-buying__cta" id="cta-join-pool">
+          <!-- Lucide: users -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          Join a pool
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SKIP TRAFFIC SECTION
+       Text left · Image right · Cream background
+  ═══════════════════════════════════════════════════ -->
+  <section class="skip-traffic" id="skip-traffic">
+    <div class="skip-traffic__inner">
+
+      <picture class="feature-number-badge-picture">
+        <source media="(max-width: 900px)" srcset="Mobile_view_pics/Number_3.png" />
+        <img src="pictures/Number_3.png" alt="Step 3" class="feature-number-badge feature-number-badge--3" />
+      </picture>
+
+      <!-- Left: Copy -->
+      <div class="skip-traffic__text">
+        <h2 class="skip-traffic__heading">
+          Tired of Traffic swallowing your entire saturday
+          <span class="skip-traffic__q">just to restock?</span>
+        </h2>
+
+        <p class="skip-traffic__body">
+          Order on Konsume — <strong>your foodstuff comes straight from the market to your door,</strong>
+          while you spend that time on the things and people that actually matter.
+        </p>
+
+        <a href="#" class="skip-traffic__cta" id="cta-skip-traffic">
+          <!-- Lucide: zap -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+          </svg>
+          Skip the traffic
+        </a>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="skip-traffic__image-wrap">
+        <img src="pictures/traffic.png" alt="Lagos traffic chaos — conductors, danfo buses, crowded market roads"
+          loading="lazy" class="skip-traffic__img" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       MULTIPLE VENDORS SECTION
+       Image left · Text right · White background
+  ═══════════════════════════════════════════════════ -->
+  <section class="multi-vendors" id="multi-vendors">
+    <div class="multi-vendors__inner">
+
+      <picture class="feature-number-badge-picture">
+        <source media="(max-width: 900px)" srcset="Mobile_view_pics/Number_4.png" />
+        <img src="pictures/Number_4.png" alt="Step 4" class="feature-number-badge feature-number-badge--4" />
+      </picture>
+
+      <!-- Left: Image -->
+      <div class="multi-vendors__image-wrap">
+        <img src="pictures/Multiple vendors.png"
+          alt="Multiple vendors offering the same product on Konsume" loading="lazy"
+          class="multi-vendors__img" />
+      </div>
+
+      <!-- Right: Copy -->
+      <div class="multi-vendors__text">
+        <h2 class="multi-vendors__heading">
+          <strong>Why should one seller decide <span class="multi-vendors__accent">what you pay?</span></strong>
+        </h2>
+
+        <p class="multi-vendors__body">
+          On Konsume, they don't. Every product on the platform has multiple vendors listing it simultaneously, and you
+          choose who to buy from.
+        </p>
+
+        <p class="multi-vendors__body">
+          If you think someone's price is too high or their product quality too low, skip to the next seller, compare
+          prices, and negotiate directly before placing your order.
+        </p>
+
+        <p class="multi-vendors__body">
+          The haggling culture of the market — preserved, without the sun and the bus fare.
+        </p>
+
+        <a href="#" class="multi-vendors__cta" id="cta-see-vendors">
+          <!-- Lucide: users -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          See vendors
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       HOW IT WORKS — Chowdeck-style carousel
+       3 slides · Vibrant backgrounds · Bold flat SVG art
+       Card bleeds across section boundary
+  ═══════════════════════════════════════════════════ -->
+  <section class="hiw" id="how-it-works">
+    <h2 class="hiw__heading">How Konsume Get Things Done
+      <svg class="hiw__heading-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="4" x2="12" y2="20"></line>
+        <polyline points="18 14 12 20 6 14"></polyline>
+      </svg>
+    </h2>
+
+    <div class="hiw__carousel" id="hiw-carousel">
+      <div class="hiw__track" id="hiw-track">
+
+        <!-- SLIDE 0 — How Konsume Works Overview (Green Overview Card) -->
+        <div class="hiw__slide hiw__slide--green" data-slide="0">
+          <div class="hiw__slide-content">
+            <h4 class="hiw__slide-supertitle" id="hiw-slide-0-supertitle">Bring the market to your phone</h4>
+            <div class="hiw__text-block">
+              <span class="hiw__step-label">Overview</span>
+              <h3 class="hiw__slide-title" id="hiw-slide-0-title">How Konsume works</h3>
+              <p class="hiw__slide-body" id="hiw-slide-0-body"><strong>Konsume</strong> is built for the millions of us who cook, with multiple vendors competing for your order, prices exactly as they are in the market, and a way to pool with people online to buy in bulk, split, and get more while spending less.</p>
+            </div>
+            <div class="hiw__art" aria-hidden="true">
+              <img src="illustrations /card_1.png" alt="How Konsume works illustration" class="hiw__img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 1 — Drop your location (Purple Step 01) -->
+        <div class="hiw__slide hiw__slide--purple" data-slide="1">
+          <div class="hiw__slide-content">
+            <h4 class="hiw__slide-supertitle" id="hiw-slide-1-supertitle">Set your location and discover sellers</h4>
+            <div class="hiw__text-block">
+              <span class="hiw__step-label">Step 01</span>
+              <h3 class="hiw__slide-title" id="hiw-slide-1-title">Drop your location</h3>
+              <p class="hiw__slide-body" id="hiw-slide-1-body"><strong>Konsume</strong> guarantees market pricing on every listing. But it goes further, multiple vendors compete for your order openly, and you can negotiate directly. A vendor lists ₦1,800? Offer ₦1,600. If they accept, it's a done deal. <strong>Konsume</strong> brings the negotiation culture of the market to your phone.</p>
+            </div>
+            <div class="hiw__art" aria-hidden="true">
+              <img src="illustrations /Card_2.png" alt="Discover sellers illustration" class="hiw__img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 — Browse & join a pool (Amber Step 02) -->
+        <div class="hiw__slide hiw__slide--orange" data-slide="2">
+          <div class="hiw__slide-content">
+            <h4 class="hiw__slide-supertitle" id="hiw-slide-2-supertitle">Buy alone or join a pool</h4>
+            <div class="hiw__text-block">
+              <span class="hiw__step-label">Step 02</span>
+              <h3 class="hiw__slide-title" id="hiw-slide-2-title">Pool with others</h3>
+              <p class="hiw__slide-body" id="hiw-slide-2-body">Choose to buy individually at market price, or join a pool. When enough people pool together to hit the bulk threshold, everyone gets wholesale pricing and <strong>Konsume</strong> handles the buying, splitting, and delivery. Every product on <strong>Konsume</strong> has a pool option. See how many people have joined, how close the pool is to filling, and share your unique link to speed it up.</p>
+            </div>
+            <div class="hiw__art" aria-hidden="true">
+              <img src="illustrations /card_3.png" alt="Pool illustration" class="hiw__img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 — Delivered to your door (Cream Step 03) -->
+        <div class="hiw__slide hiw__slide--cream" data-slide="3">
+          <div class="hiw__slide-content">
+            <h4 class="hiw__slide-supertitle" id="hiw-slide-3-supertitle">We handle buying, splitting, delivery</h4>
+            <div class="hiw__text-block">
+              <span class="hiw__step-label">Step 03</span>
+              <h3 class="hiw__slide-title" id="hiw-slide-3-title">You buy. We carry</h3>
+              <p class="hiw__slide-body" id="hiw-slide-3-body">After you order or your pool fills, <strong>Konsume's</strong> team collects from the market at the price you saw on the app, splits pooled orders by contribution, and delivers directly to you. Individual orders land same day. Pool orders land once split and dispatched.</p>
+            </div>
+            <div class="hiw__art" aria-hidden="true">
+              <img src="illustrations /card_4.png" alt="Delivered to your door illustration" class="hiw__img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 — Ready to Save (Orange/Teal Sparkle Step) -->
+        <div class="hiw__slide hiw__slide--sparkle" data-slide="4">
+          <div class="hiw__slide-content">
+            <h4 class="hiw__slide-supertitle" id="hiw-slide-4-supertitle">The market is better here, start with Konsume.</h4>
+            <div class="hiw__text-block">
+              <span class="hiw__step-label">Get Started</span>
+              <h3 class="hiw__slide-title" id="hiw-slide-4-title">Ready to Buy ?</h3>
+              <p class="hiw__slide-body" id="hiw-slide-4-body">The market is cheaper. Now it's also closer. Get on <strong>Konsume</strong>, browse real vendors, pool with neighbours, friends strangers and pay exactly what you'd pay inside the market . Not a kobo more.</p>
+            </div>
+            <div class="hiw__art" aria-hidden="true">
+              <img src="illustrations /card_5.png" alt="Ready to buy illustration" class="hiw__img" />
+            </div>
+          </div>
+        </div>
+      </div><!-- /track -->
+
+      <!-- Bottom controls bar -->
+      <div class="hiw__controls">
+        <div class="hiw__indicators">
+          <button class="hiw__pin hiw__dot hiw__dot--active" data-goto="0" aria-label="How it works overview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle class="hiw__pin-dot" cx="12" cy="10" r="3"/>
+            </svg>
+            <svg class="hiw__timer-svg" viewBox="0 0 100 100">
+              <circle class="hiw__timer-circle" cx="50" cy="50" r="46" />
+            </svg>
+          </button>
+          <button class="hiw__dot" data-goto="1" aria-label="Step 1">
+            01
+            <svg class="hiw__timer-svg" viewBox="0 0 100 100">
+              <circle class="hiw__timer-circle" cx="50" cy="50" r="46" />
+            </svg>
+          </button>
+          <button class="hiw__dot" data-goto="2" aria-label="Step 2">
+            02
+            <svg class="hiw__timer-svg" viewBox="0 0 100 100">
+              <circle class="hiw__timer-circle" cx="50" cy="50" r="46" />
+            </svg>
+          </button>
+          <button class="hiw__dot" data-goto="3" aria-label="Step 3">
+            03
+            <svg class="hiw__timer-svg" viewBox="0 0 100 100">
+              <circle class="hiw__timer-circle" cx="50" cy="50" r="46" />
+            </svg>
+          </button>
+          <button class="hiw__sparkle hiw__dot" data-goto="4" aria-label="Sparkle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M12 2 Q 12 12 22 12 Q 12 12 12 22 Q 12 12 2 12 Q 12 12 12 2 Z"/>
+            </svg>
+            <svg class="hiw__timer-svg" viewBox="0 0 100 100">
+              <circle class="hiw__timer-circle" cx="50" cy="50" r="46" />
+            </svg>
+          </button>
+        </div>
+        <div class="hiw__arrows">
+          <button class="hiw__arrow hiw__arrow--prev" id="hiw-prev" aria-label="Previous step">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </button>
+          <button class="hiw__arrow hiw__arrow--next" id="hiw-next" aria-label="Next step">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /carousel -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="footer__brand-name">Konsume</span>
+          <p class="footer__brand-tagline">The digital local market.<br>Market price. No detours.</p>
+        </div>
+        <div class="footer__nav">
+          <div class="footer__nav-col">
+            <h4 class="footer__nav-heading">Company</h4>
+            <a href="#" class="footer__nav-link">About Us</a>
+            <a href="#" class="footer__nav-link">How it works</a>
+            <a href="#" class="footer__nav-link">Blog</a>
+            <a href="#" class="footer__nav-link">Careers</a>
+          </div>
+          <div class="footer__nav-col">
+            <h4 class="footer__nav-heading">Support</h4>
+            <a href="#" class="footer__nav-link">Help Centre</a>
+            <a href="#" class="footer__nav-link">Contact Us</a>
+            <a href="#" class="footer__nav-link">Privacy Policy</a>
+            <a href="#" class="footer__nav-link">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Konsume Technologies Ltd. All rights reserved.</p>
+        <p class="footer__country">🇳🇬 Made for Nigeria</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
