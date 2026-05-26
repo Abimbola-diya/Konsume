@@ -1384,6 +1384,10 @@ body.menu-open .mobile-menu__panel {
   height: 80px;
 }
 
+.torn-edge--top svg {
+  height: 80px;
+}
+
 /* ── Carousel container — rounded card overlaying straight line ── */
 .hiw__carousel {
   position: relative;
@@ -2148,7 +2152,7 @@ body.menu-open .mobile-menu__panel {
 }
 
 .faq__list-wrapper {
-  max-height: 480px;
+  max-height: 530px;
   overflow-y: auto;
   padding-right: 15px;
 }
@@ -2227,8 +2231,8 @@ body.menu-open .mobile-menu__panel {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 100%;
-  min-height: 380px;
+  height: calc(100% - 70px);
+  min-height: 430px;
   box-shadow: 6px 6px 0px rgba(0, 0, 0, 1); /* premium blocky style */
   position: relative;
 }
